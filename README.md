@@ -4,7 +4,7 @@ This template is for an endpoint neutral containerized Vite project. You can bui
 
 
 ## Customize configuration
-Edit the .env file and add your app UI properties they will be injected into the UI as APP_PROPS
+Edit the .env file and add your app UI properties they will be injected into the UI as APP_PROPS  
 Set VITE_LOGGING to 0 or 1 for browser logging
 
 
