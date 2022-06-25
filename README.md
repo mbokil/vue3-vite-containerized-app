@@ -1,6 +1,6 @@
-# vue-project
+# vue-vite-containerized-app
 
-This template is for an endpoint neutral containerized Vite project
+This template is for an endpoint neutral containerized Vite project. You can build the app once and then move the dist folder to a dev, QA or production container. Just point the container config at your env file and the Node server will inject the Vite properties into your Vue app.
 
 
 ## Customize configuration
