@@ -2,7 +2,9 @@
   "name": "vue-base-project",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "mode=dev vite",
+    "qa": "mode=qa vite",
+    "prod": "mode=prod vite",
     "build": "vite build",
     "preview": "vite preview --port 4173"
   },
@@ -11,7 +13,8 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "fs": "0.0.1-security",
-    "os": "^0.1.2"
+    "os": "^0.1.2",
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "vue": "^3.2.37",
