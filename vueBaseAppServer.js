@@ -9,16 +9,16 @@ const argv = require('yargs')
     .string('env')
     .argv;
 
-//set config file based on env
+// set config file based on env
 if (argv.hasOwnProperty('env') && argv.env) {
 	console.log('Env param found:', argv.env);
 	require('dotenv').config({ path: `${__dirname}/config/.env.${argv.env.toLowerCase()}` })
 } else {
-	console.log('No env param found defaulting to .env.dev');
-	require('dotenv').config({ path: `${__dirname}/config/.env.dev` })
+	console.log('No env param found defaulting to .env');
+	require('dotenv').config({ path: `${__dirname}/config/.env` })
 }
 
-//app properties from .env file
+// app properties from .env file
 const appProps = {};
 for (const [key, value] of Object.entries(process.env)) {
   if (key.includes('VITE')) {
@@ -26,10 +26,10 @@ for (const [key, value] of Object.entries(process.env)) {
   }
 }
 
-//use gzip to compress response
+// use gzip to compress response
 app.use(compression());
 
-//Enable CORS && IE Edge mode
+// Enable CORS && IE Edge mode
 app.use((req, res, next) => {
 	res.setHeader('X-UA-Compatible', 'IE=edge');
   res.header("Access-Control-Allow-Origin", "*");
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//set response header to no cache for index.html
+// set response header to no cache for index.html
 const nocache = (req, res, next) => {
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   res.header('Expires', '-1');
@@ -45,7 +45,7 @@ const nocache = (req, res, next) => {
   next();
 };
 
-//serve dist folder assets
+// serve dist folder assets
 app.use('/assets', express.static(`${__dirname}/dist/assets`));
 
 const errorMsg = "<p style='color:red;font-size:16px;padding:15px;font-family:arial,helvetica;'>Node server couldn't find the index.html file. Check to see if you have built the dist folder.</p>";
@@ -54,7 +54,7 @@ html.text = getAppHtml();
 html.text = injectProps(html.text);
 html.len = html.text.length;
 
-//serve index.html file catching all other urls
+// serve index.html file catching all other urls
 app.get(/.*/, nocache, (req, res) => {
 	if (html.text) {
 		res.writeHead(200, {'Content-Type': 'text/html','Content-Length':html.len});
@@ -88,7 +88,7 @@ if (process.env.HTTP_ENABLED == true) {
   });
 }
 
-//get page HTML string
+// get page HTML string
 function getAppHtml() {
 	let html = '';
 	try {
@@ -100,7 +100,7 @@ function getAppHtml() {
 	return html;
 }
 
-//inject props from ENV process into HTML index.html file if 'UI' is found in prop name
+// inject props from ENV process into HTML index.html file if 'UI' is found in prop name
 function injectProps(html) {
 	let propsStr = "var APP_PROPS={";
 
@@ -113,7 +113,7 @@ function injectProps(html) {
 	return html.replace('{APP_PROPS:null}',propsStr);
 }
 
-//parse string into type
+// parse string into type
 function parsePropType(propStr) {
 	if (propStr === 'true') {
 		return true;
