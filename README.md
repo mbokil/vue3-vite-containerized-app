@@ -11,6 +11,9 @@ Set VITE_LOGGING to 0 or 1 for browser logging
 ## Project Setup
 
 ```
+git clone https://github.com/mbokil/vue3-vite-containerized-app
+cd vue3-vite-containerized-app
+
 npm install
 ```
 
