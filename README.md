@@ -1,6 +1,6 @@
 # vue-vite-containerized-app
 
-This template is for an endpoint neutral containerized Vue 3/Vite project. You can build the app once and then move the Node 14 container to a dev, QA or production container. Just point the container config at your .env file and the Node server will inject the Vite properties into your Vue app. No more rebuilding to change your UI endpoints!
+This template is for an endpoint neutral containerized Vue 3/Vite project. You can build the app once and then move the Node 14 container to a dev, QA or production environment. Just point the container config at your .env file and the Node server will inject the Vite properties into your Vue app. No more rebuilding to change your UI endpoints. The UI and server now share the same properties.
 
 
 ## Customize configuration
