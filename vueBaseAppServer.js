@@ -48,6 +48,7 @@ const nocache = (req, res, next) => {
 // serve dist folder assets
 app.use('/assets', express.static(`${__dirname}/dist/assets`));
 
+// read index.html and inject props serving page from cache
 const errorMsg = "<p style='color:red;font-size:16px;padding:15px;font-family:arial,helvetica;'>Node server couldn't find the index.html file. Check to see if you have built the dist folder.</p>";
 const html = {text:'', len:0};
 html.text = getAppHtml();
@@ -100,7 +101,7 @@ function getAppHtml() {
 	return html;
 }
 
-// inject props from ENV process into HTML index.html file if 'UI' is found in prop name
+// inject props from ENV process into HTML index.html file
 function injectProps(html) {
 	let propsStr = "var APP_PROPS={";
 
