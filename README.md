@@ -25,16 +25,6 @@ npm run qa
 npm run prod
 ```
 
-### Compile, Build a docker image, and run
-
-```
-# Install docker first if not installed - one time
-brew install docker
-
-docker build -t my-app .
-docker run -d -p 3000:3000 --env-file config/.env my-app
-```
-
 ### Compile and Minify for Production
 
 ```
@@ -46,4 +36,14 @@ node vueBaseAppServer.js --env qa
 node vueBaseAppServer.js --env prod
 
 Open browser to: http://localhost:8181
+```
+
+### Compile, Build a docker image, and run
+
+```
+# Install docker first if not installed - one time
+brew install docker
+
+docker build -t my-app .
+docker run -d -p 3000:3000 --env-file config/.env my-app
 ```
