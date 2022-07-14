@@ -25,6 +25,17 @@ npm run qa
 npm run prod
 ```
 
+### Compile, Build a docker image, and run
+
+```
+# Install docker first if not installed
+brew install docker
+
+docker build -t my-app .
+docker run -d -p 3000:3000 --env-file config/.env my-app
+
+```
+
 ### Compile and Minify for Production
 
 ```

@@ -6,7 +6,8 @@
     "qa": "mode=qa vite",
     "prod": "mode=prod vite",
     "build": "vite build",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "start":"node vueBaseAppServer.js"
   },
   "dependencies": {
     "compression": "^1.7.4",

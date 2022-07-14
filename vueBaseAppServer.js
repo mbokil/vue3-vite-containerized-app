@@ -45,7 +45,8 @@ const nocache = (req, res, next) => {
   next();
 };
 
-// serve dist folder assets
+// serve dist folder assets and favicon
+app.use('/favicon.ico', express.static(`${__dirname}/dist/favicon.ico`));
 app.use('/assets', express.static(`${__dirname}/dist/assets`));
 
 // read index.html and inject props serving page from cache
