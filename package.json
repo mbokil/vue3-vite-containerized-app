@@ -7,7 +7,7 @@
     "prod": "mode=prod vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
-    "start":"node vueBaseAppServer.js"
+    "start": "node vueBaseAppServer.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
@@ -18,8 +18,8 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "vue": "^3.2.37",
-    "@vitejs/plugin-vue": "^2.3.3",
-    "vite": "^2.9.12"
+    "@vitejs/plugin-vue": "^3.0.0",
+    "vite": "^3.0.0",
+    "vue": "^3.2.37"
   }
 }
