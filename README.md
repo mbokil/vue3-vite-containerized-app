@@ -1,6 +1,6 @@
 # vue-vite-containerized-app
 
-This template is for an endpoint neutral containerized Vue 3/Vite project. You can build the app once and then move the docker image to a dev, QA or production environment. Just point the image config at your .env file and the Node server will inject the Vite properties into your Vue app. No more rebuilding to change your UI endpoints. The UI and server now share the same properties. I have included Docker build and run instructions.
+This template is for an endpoint neutral containerized Vue 3/Vite 3 project. You can build the app once and then move the docker image to a dev, QA or production environment. Just point the image config at your .env file and the Node server will inject the Vite properties into your Vue app. No more rebuilding to change your UI endpoints. The UI and server now share the same properties. I have included Docker build and run instructions.
 
 
 ## Customize configuration
@@ -46,6 +46,9 @@ Open browser to: http://localhost:3000
 ```
 # Install docker first if not installed - one time
 brew install docker
+
+# Run Docker if not running (macos)
+open --background -a Docker
 
 docker build -t my-app .
 docker run -d -p 3000:3000 --env-file config/.env my-app
