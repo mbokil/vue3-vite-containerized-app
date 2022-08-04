@@ -5,7 +5,7 @@ This template is for an endpoint neutral containerized Vue 3/Vite 3 project. You
 
 ## Customize configuration
 Edit the /config/.env.* files and add your app UI properties they will be injected into the UI as APP_PROPS  
-Set VITE_LOGGING to 0 or 1 for browser logging
+Set VITE_LOGGING to true for browser logging
 
 
 ## Project Setup
