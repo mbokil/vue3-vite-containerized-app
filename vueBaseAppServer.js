@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const os = require("os");
 const express = require('express');
@@ -15,7 +14,7 @@ if (argv.hasOwnProperty('env') && argv.env) {
 	require('dotenv').config({ path: `${__dirname}/config/.env.${argv.env.toLowerCase()}` })
 } else {
 	console.log('No env param found defaulting to .env');
-	require('dotenv').config({ path: `${__dirname}/config/.env` })
+	require('dotenv').config({ path: `${__dirname}/config/.env` });
 }
 
 // app properties from .env file
@@ -68,9 +67,10 @@ app.get(/.*/, nocache, (req, res) => {
 	res.end();
 });
 
-const nodePort = process.env.NODE_PORT;
+const nodePort = +process.env.NODE_PORT;
+const httpsEnabled = process.env.HTTPS_ENABLED === 'true';
 
-if (process.env.HTTP_ENABLED == true) {
+if (httpsEnabled) {
   let options = {
      pfx: fs.readFileSync(process.env.CERT_PATH),
      passphrase: process.env.PASSPHRASE

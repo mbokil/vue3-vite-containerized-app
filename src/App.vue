@@ -1,17 +1,18 @@
 <script setup>
-import { ref } from "vue";
+import { ref, toRaw } from "vue";
 import HelloWorld from './components/HelloWorld.vue'
 import { log } from "@/services/utility.js"; // logging browser service
+
 let data = $ref(null); // using the new reactivity transform compiler option to avoid .value
 
 const fetchData = async () => {
-	const resp = await fetch(APP_PROPS.VITE_SERVICE_URL);
-  if (!resp.ok) {
-  	throw new Error('An error occurred: ' + resp.status);
+	const response = await fetch('https://devhubby.com/api/thread/latest?limit=10');
+  if (!response.ok) {
+  	throw new Error('An error occurred: ' + response.status);
 	} else {
-		const json = await resp.json();
+		const json = await response.json();
 		data = json.threads;
-  	log('fetched data:',data);
+    log('fetched data:',toRaw(data));
 	}
 }
 

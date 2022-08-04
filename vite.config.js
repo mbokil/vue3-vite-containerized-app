@@ -11,7 +11,19 @@ const appProps = {};
 
 for (const [key, value] of Object.entries(process.env)) {
   if (key.includes('VITE')) {
-  	appProps[key] = value;
+  	appProps[key] = parsePropType(value);
+  }
+}
+
+function parsePropType(propStr) {
+  if (propStr === 'true') {
+    return true;
+  } else if (propStr === 'false') {
+    return false;
+  } else if (!isNaN(propStr)) {
+    return +propStr;
+  } else {
+    return `"${propStr}"`;
   }
 }
 
