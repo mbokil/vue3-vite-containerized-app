@@ -6,7 +6,7 @@ import { log } from "@/services/utility.js"; // logging browser service
 let data = $ref(null); // using the new reactivity transform compiler option to avoid .value
 
 const fetchData = async () => {
-	const response = await fetch('https://devhubby.com/api/thread/latest?limit=10');
+	const response = await fetch(APP_PROPS.VITE_SERVICE_URL);
   if (!response.ok) {
   	throw new Error('An error occurred: ' + response.status);
 	} else {
