@@ -23,7 +23,7 @@ function parsePropType(propStr) {
   } else if (!isNaN(propStr)) {
     return +propStr;
   } else {
-    return `"${propStr}"`;
+    return propStr;
   }
 }
 

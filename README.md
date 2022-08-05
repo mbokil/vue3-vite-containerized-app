@@ -14,6 +14,7 @@ Set VITE_LOGGING to true for browser logging
 git clone https://github.com/mbokil/vue3-vite-containerized-app
 cd vue3-vite-containerized-app
 
+# Using Node 16.x
 npm install
 ```
 
