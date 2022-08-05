@@ -20,8 +20,10 @@ function parsePropType(propStr) {
     return true;
   } else if (propStr === 'false') {
     return false;
-  } else if (!isNaN(propStr)) {
+  } else if (!isNaN(propStr) && propStr.trim() !== '') {
     return +propStr;
+  } else if (propStr.trim() === '') {
+    return '';
   } else {
     return propStr;
   }
