@@ -1,18 +1,18 @@
 <script setup>
-import { ref, toRaw } from "vue";
+import { ref } from "vue";
 import HelloWorld from './components/HelloWorld.vue'
 import { log } from "@/services/utility.js"; // logging browser service
 
-let data = $ref(null); // using the new reactivity transform compiler option to avoid .value
+let data = ref(null);
 
 const fetchData = async () => {
 	const response = await fetch(APP_PROPS.VITE_SERVICE_URL);
-  if (!response.ok) {
-  	throw new Error('An error occurred: ' + response.status);
+  if (!response || !response.ok) {
+  	console.log('error fetching data')
 	} else {
 		const json = await response.json();
-		data = json.threads;
-    log('fetched data:',toRaw(data));
+		data.value = json;
+    log('fetched data:', json);
 	}
 }
 
@@ -24,9 +24,9 @@ fetchData();
   <header>
     <img alt="App logo" class="logo" src="@/assets/images/logo.png" width="200" height="200" />
     <div class="wrapper">
-      <HelloWorld msg="Containerized Minimal Vue 3 App" />
+      <HelloWorld msg="Containerized Endpoint Neutral Vue 3 App" />
       <ul class="list">
-      	<li v-for="x in data" :key="x.id">{{ x.name }}</li>
+      	<li v-for="x in data" :key="x.id">{{ x.body }}</li>
       </ul>
     </div>
   </header>

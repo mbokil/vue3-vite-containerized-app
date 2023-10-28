@@ -38,9 +38,7 @@ export default defineConfig({
     [propsName]: JSON.stringify(appProps)
   },
   plugins: [
-  	vue({
-      reactivityTransform: true
-    })
+  	vue({})
   ],
   resolve: {
     alias: {

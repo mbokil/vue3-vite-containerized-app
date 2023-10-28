@@ -1,5 +1,4 @@
 const fs = require('fs');
-const os = require("os");
 const express = require('express');
 const app = express();
 const compression = require('compression');
@@ -68,23 +67,21 @@ app.get(/.*/, nocache, (req, res) => {
 });
 
 const nodePort = +process.env.NODE_PORT;
-const httpsEnabled = process.env.HTTPS_ENABLED === 'true';
+const httpsEnabled = process.env.NODE_HTTPS_ENABLED === 'true';
 
 if (httpsEnabled) {
   let options = {
-     pfx: fs.readFileSync(process.env.CERT_PATH),
-     passphrase: process.env.PASSPHRASE
+     pfx: fs.readFileSync(process.env.NODE_CERT_PATH),
+     passphrase: process.env.NODE_PASSPHRASE
   };
 
   https.createServer(options, app).listen(nodePort,() => {
-  	console.log(`Hostname: ${os.hostname()}`);
   	console.log('APP_PROPS:',appProps);
   	console.log(`${process.env.VITE_APP_NAME} server is running under HTTPS on port ${nodePort} `);
   });
  
 } else {
    app.listen(nodePort, () => {
-   	console.log(`Hostname: ${os.hostname()}`);
    	console.log('APP_PROPS:',appProps);
    	console.log(`${process.env.VITE_APP_NAME} server is running under HTTP on port ${nodePort}`);
   });
