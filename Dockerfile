@@ -1,12 +1,12 @@
 # first stage builds vue
-FROM node:16 as build-stage
+FROM node:18 as build-stage
 WORKDIR /build
 COPY . .
 RUN npm install
 RUN npm run build
  
 # second stage copies the static dist files and Node server files
-FROM node:16 as production-stage
+FROM node:18 as production-stage
 WORKDIR /app
 COPY package.json vueBaseAppServer.js ./
 COPY --from=build-stage /build/dist/ dist/
